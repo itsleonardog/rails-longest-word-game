@@ -1,0 +1,16 @@
+<h1>New game</h1>
+
+<ul>
+  <% @letters.each do |letter| %>
+    <li><%= letter %></li>
+  <% end %>
+</ul>
+
+<%= form_tag(score_path, method: :post, data: { turbo: false }) do %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <p>
+    <%= label_tag(:word, "Enter a word:") %>
+    <%= text_field_tag(:word) %>
+  </p>
+  <%= submit_tag("Submit") %>
+<% end %>
